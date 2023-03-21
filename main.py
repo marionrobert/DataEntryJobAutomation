@@ -26,5 +26,9 @@ all_links = [f"https://www.zillow.com{link.get('href')}" for link in original_li
 # print(all_links)
 
 original_prices = soup.find_all("div", class_="StyledPropertyCardDataArea-c11n-8-85-1__sc-yipmu-0 bqsBln")
-all_prices = [float(price.text.split("+")[0].split("/mo")[0].replace("$", "").replace(",", ".")) for price in original_prices]
+all_prices = [int(price.text.split("+")[0].split("/mo")[0].replace("$", "").replace(",", "")) for price in original_prices]
 # print(all_prices)
+
+original_addresses = soup.find_all("address")
+all_addresses = [address.text for address in original_addresses]
+# print(all_addresses)
